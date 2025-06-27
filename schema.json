@@ -1,0 +1,308 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "OpenCLI.json",
+    "type": "object",
+    "properties": {
+        "opencli": {
+            "type": "string",
+            "description": "The OpenCLI version number"
+        },
+        "info": {
+            "$ref": "#/$defs/CliInfo",
+            "description": "Information about the CLI"
+        },
+        "conventions": {
+            "$ref": "#/$defs/Conventions",
+            "description": "The conventions used by the CLI"
+        },
+        "arguments": {
+            "$ref": "#/$defs/RecordArgument",
+            "description": "The arguments for the root command"
+        },
+        "options": {
+            "$ref": "#/$defs/RecordOption",
+            "description": "The options for the root command"
+        },
+        "commands": {
+            "$ref": "#/$defs/RecordCommand",
+            "description": "The sub commands for the root command"
+        },
+        "exitCodes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/ExitCode"
+            },
+            "description": "Exit codes for the root command"
+        },
+        "examples": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Examples of how to use the CLI"
+        },
+        "metadata": {
+            "$ref": "#/$defs/RecordUnknown",
+            "description": "Custom metadata"
+        }
+    },
+    "required": [
+        "opencli",
+        "info"
+    ],
+    "description": "The OpenCLI description",
+    "$defs": {
+        "CliInfo": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The CLI title"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the CLI"
+                },
+                "contact": {
+                    "$ref": "#/$defs/Contact",
+                    "description": "The CLI contact information"
+                },
+                "license": {
+                    "$ref": "#/$defs/License",
+                    "description": "The CLI license"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The CLI version"
+                }
+            },
+            "required": [
+                "title",
+                "version"
+            ]
+        },
+        "Conventions": {
+            "type": "object",
+            "properties": {
+                "groupOptions": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether or not grouping of short options are allowed"
+                },
+                "optionSeparator": {
+                    "type": "string",
+                    "default": " ",
+                    "description": "The option argument separator"
+                }
+            }
+        },
+        "RecordArgument": {
+            "type": "object",
+            "properties": {},
+            "unevaluatedProperties": {
+                "$ref": "#/$defs/Argument"
+            }
+        },
+        "RecordOption": {
+            "type": "object",
+            "properties": {},
+            "unevaluatedProperties": {
+                "$ref": "#/$defs/Option"
+            }
+        },
+        "RecordCommand": {
+            "type": "object",
+            "properties": {},
+            "unevaluatedProperties": {
+                "$ref": "#/$defs/Command"
+            }
+        },
+        "ExitCode": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "description": "The exit code"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The exit code description"
+                }
+            },
+            "required": [
+                "code"
+            ]
+        },
+        "RecordUnknown": {
+            "type": "object",
+            "properties": {},
+            "unevaluatedProperties": {}
+        },
+        "Contact": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the individual or organization"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URL to the homepage of the individual or organization"
+                },
+                "email": {
+                    "$ref": "#/$defs/email",
+                    "description": "A contact email to the individual or organization"
+                }
+            },
+            "description": "Contact information"
+        },
+        "License": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The license name"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "The license SPDX identifier"
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "Argument": {
+            "type": "object",
+            "properties": {
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether or not the argument is required"
+                },
+                "acceptedValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of accepted values"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The argument group"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The argument description"
+                },
+                "metadata": {
+                    "$ref": "#/$defs/RecordUnknown",
+                    "description": "Custom metadata"
+                }
+            }
+        },
+        "Option": {
+            "type": "object",
+            "properties": {
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether or not the option is required"
+                },
+                "aliases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "description": "The option aliases"
+                },
+                "arity": {
+                    "$ref": "#/$defs/Arity",
+                    "description": "The option argument arity"
+                },
+                "arguments": {
+                    "$ref": "#/$defs/RecordArgument",
+                    "description": "The option arguments"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The option group"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The option description"
+                },
+                "metadata": {
+                    "$ref": "#/$defs/RecordUnknown",
+                    "description": "Custom metadata"
+                }
+            }
+        },
+        "Command": {
+            "type": "object",
+            "properties": {
+                "aliases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "description": "The command aliases"
+                },
+                "options": {
+                    "$ref": "#/$defs/RecordOption",
+                    "description": "The command options"
+                },
+                "arguments": {
+                    "$ref": "#/$defs/RecordArgument",
+                    "description": "The command arguments"
+                },
+                "commands": {
+                    "description": "The command's sub commands",
+                    "$ref": "#/$defs/RecordCommand"
+                },
+                "exitCodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/ExitCode"
+                    },
+                    "description": "The command's exit codes"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The command description"
+                },
+                "examples": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Examples of how to use the command"
+                },
+                "metadata": {
+                    "$ref": "#/$defs/RecordUnknown",
+                    "description": "Custom metadata"
+                }
+            }
+        },
+        "email": {
+            "type": "string",
+            "pattern": ".+\\@.+\\..+"
+        },
+        "Arity": {
+            "type": "object",
+            "properties": {
+                "minimum": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "The minimum arity value"
+                },
+                "maximum": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "The maximum arity value"
+                }
+            }
+        }
+    }
+}

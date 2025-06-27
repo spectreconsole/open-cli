@@ -1,0 +1,68 @@
+---
+sidebar_position: 50
+slug: /examples
+toc_min_heading_level: 2
+toc_max_heading_level: 5
+title: Examples
+---
+
+## .NET SDK
+
+```json
+{
+    "$schema": "https://raw.githubusercontent.com/spectreconsole/open-cli/refs/heads/main/schema.json",
+    "opencli": "0.1",
+    "info": {
+        "title": "dotnet",
+        "version": "9.0.1",
+        "description": "The .NET CLI",
+        "license": {
+            "name": "MIT License",
+            "identifier": "MIT"
+        }
+    },
+    "options": {
+        "--help": {
+            "aliases": [
+                "-h"
+            ],
+            "description": "Display help."
+        },
+        "--info": {
+            "description": "Display .NET information."
+        },
+        "--list-sdks": {
+            "description": "Display the installed SDKs."
+        },
+        "--list-runtimes": {
+            "description": "Display the installed runtimes."
+        }
+    },
+    "commands": {
+        "build": {
+            "arguments": {
+                "PROJECT | SOLUTION": {
+                    "description": "The project or solution file to operate on. If a file is not specified, the command will search the current directory for one."
+                }
+            },
+            "options": {
+                "--configuration": {
+                    "aliases": [
+                        "-c"
+                    ],
+                    "description": "The configuration to use for building the project. The default for most projects is 'Debug'.",
+                    "arguments": {
+                        "CONFIGURATION": {
+                            "required": true
+                        }
+                    },
+                    "arity": {
+                        "minimum": 1,
+                        "maximum": 1
+                    }
+                }
+            }
+        }
+    }
+}
+```
