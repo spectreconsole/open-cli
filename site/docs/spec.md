@@ -154,6 +154,7 @@ This is the root object of the OpenCLI Description.
 | Field Name | Type | Description |
 |------------|:----:|-------------|
 | required | `bool` | Whether or not the argument is required |
+| ordinal | `int` | The relative position to other arguments |
 | acceptedValues | [`string`] | A list of accepted values |
 | group | `string` | The argument group |
 | decription | `string` | The argument description |

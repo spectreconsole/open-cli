@@ -113,6 +113,9 @@ model Argument {
   @doc("Whether or not the argument is required")
   required?: boolean;
 
+  @doc("The relative position to other arguments")
+  ordinal?: integer;
+
   @doc("A list of accepted values")
   acceptedValues?: string[];
 
