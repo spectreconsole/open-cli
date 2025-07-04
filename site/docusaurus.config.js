@@ -72,7 +72,7 @@ const config = {
              to: '/blog', label: 'Blog', position: 'left'
           }, */
           {
-            href: 'https://github.com/spectre-console/open-cli',
+            href: 'https://github.com/spectreconsole/open-cli',
             className: "header-github-link",
             position: 'right',
             "aria-label": "GitHub repository",
