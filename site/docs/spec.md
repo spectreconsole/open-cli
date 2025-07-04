@@ -32,6 +32,13 @@ An OpenCLI Description can be used by documentation software to display
 usage of a tool, or code generation tools to create clients for
 interoping with a CLI tool.
 
+In short, an OpenCLI description can be used for the following:
+
+* Create documentation for CLI tools
+* Generate clients for interacting with CLI tools
+* Automate external tools such as MCP servers
+* Detect changes in CLI APIs
+
 This specification is heavily influenced by the [OpenAPI specification][openapi].
 
 ## Definitions
@@ -93,7 +100,7 @@ This is the root object of the OpenCLI Description.
 | options | Map\<`string`, [Option Object](#option-object)\> | Root command options |
 | commands | Map\<`string`, [Command Object](#command-object)\> | Root command sub commands |
 | exitCodes | [[ExitCode Object](#exitcode-object)] | Root command exit codes |
-| examples | [string] | Examples of how to use the CLI |
+| examples | [`string`] | Examples of how to use the CLI |
 | metadata | Map\<`string`, `object`\> | Custom metadata |
 
 #### CliInfo Object
@@ -138,6 +145,7 @@ This is the root object of the OpenCLI Description.
 | commands | Map\<`string`, [Command Object](#command-object)\> | The command's sub commands |
 | exitCodes | [[ExitCode Object](#exitcode-object)] | The command's exit codes |
 | description | `string` | The command description |
+| hidden | `bool` | Whether or not the command is hidden |
 | examples | [`string`] | Examples of how to use the command |
 | metadata | Map\<`string`, `object`\> | Custom metadata |
 
@@ -149,6 +157,7 @@ This is the root object of the OpenCLI Description.
 | acceptedValues | [`string`] | A list of accepted values |
 | group | `string` | The argument group |
 | decription | `string` | The argument description |
+| hidden | `bool` | Whether or not the argument is hidden |
 | metadata | Map\<`string`, `object`\> | Custom metadata |
 
 #### Option Object
@@ -161,6 +170,7 @@ This is the root object of the OpenCLI Description.
 | arguments | Map\<`string`, [Argument](#argument-object)\> | The option's arguments |
 | group | `string` | The option group |
 | description | `string` | The option description |
+| hidden | `bool` | Whether or not the option is hidden |
 | metadata | Map\<`string`, `object`\> | Custom metadata |
 
 #### Arity Object

@@ -132,6 +132,7 @@ This is the root object of the OpenCLI Description.
 | commands | Map<`string`, [Command Object](#command-object)> | The command's sub commands |
 | exitCodes | [[ExitCode Object](#exitcode-object)] | The command's exit codes |
 | description | `string` | The command description |
+| hidden | `bool` | Whether or not the command is hidden |
 | examples | [`string`] | Examples of how to use the command |
 | metadata | Map<`string`, `object`> | Custom metadata |
 
@@ -143,6 +144,7 @@ This is the root object of the OpenCLI Description.
 | acceptedValues | [`string`] | A list of accepted values |
 | group | `string` | The argument group |
 | decription | `string` | The argument description |
+| hidden | `bool` | Whether or not the argument is hidden |
 | metadata | Map<`string`, `object`> | Custom metadata |
 
 #### Option Object
@@ -155,6 +157,7 @@ This is the root object of the OpenCLI Description.
 | arguments | Map<`string`, [Argument](#argument-object)> | The option's arguments |
 | group | `string` | The option group |
 | description | `string` | The option description |
+| hidden | `bool` | Whether or not the option is hidden |
 | metadata | Map<`string`, `object`> | Custom metadata |
 
 #### Arity Object

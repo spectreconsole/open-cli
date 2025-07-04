@@ -1,12 +1,21 @@
 .PHONY: schema ci
+default: help
 
-schema:
+help:
+	@echo "Targets:"
+	@echo "--------"
+	@echo "schema    Generates the JSON schema"
+	@echo "ci        Builds the site"
+
+init:
+	@echo "Initializing..."
 	@mkdir -p ./.artifacts
-	@echo "Generating JSON schema"
+
+schema: init
+	@echo "Generating JSON schema..."
 	@npm --prefix ./typespec install
 	@tsp compile ./typespec --output-dir ./.artifacts
 	@mv ./.artifacts/@typespec/json-schema/OpenCLI.json ./schema.json
 
-ci:
-	@mkdir -p ./.artifacts	
+ci: init
 	@cd site && make ci

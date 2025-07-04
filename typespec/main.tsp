@@ -99,6 +99,9 @@ model Command {
   @doc("The command description")
   description?: string;
 
+  @doc("Whether or not the command is hidden")
+  hidden: boolean = false;
+
   @doc("Examples of how to use the command")
   examples?: string[];
 
@@ -118,6 +121,9 @@ model Argument {
 
   @doc("The argument description")
   description?: string;
+
+  @doc("Whether or not the argument is hidden")
+  hidden: boolean = false;
 
   @doc("Custom metadata")
   metadata?: Record<unknown>;
@@ -142,6 +148,9 @@ model Option {
 
   @doc("The option description")
   description?: string;
+
+  @doc("Whether or not the option is hidden")
+  hidden: boolean = false;
 
   @doc("Custom metadata")
   metadata?: Record<unknown>;

@@ -17,22 +17,22 @@
         },
         "arguments": {
             "$ref": "#/$defs/RecordArgument",
-            "description": "The arguments for the root command"
+            "description": "Root command arguments"
         },
         "options": {
             "$ref": "#/$defs/RecordOption",
-            "description": "The options for the root command"
+            "description": "Root command options"
         },
         "commands": {
             "$ref": "#/$defs/RecordCommand",
-            "description": "The sub commands for the root command"
+            "description": "Root command sub commands"
         },
         "exitCodes": {
             "type": "array",
             "items": {
                 "$ref": "#/$defs/ExitCode"
             },
-            "description": "Exit codes for the root command"
+            "description": "Root command exit codes"
         },
         "examples": {
             "type": "array",
@@ -57,23 +57,23 @@
             "properties": {
                 "title": {
                     "type": "string",
-                    "description": "The CLI title"
+                    "description": "The application title"
                 },
                 "description": {
                     "type": "string",
-                    "description": "A description of the CLI"
+                    "description": "A description of the application"
                 },
                 "contact": {
                     "$ref": "#/$defs/Contact",
-                    "description": "The CLI contact information"
+                    "description": "The contact information"
                 },
                 "license": {
                     "$ref": "#/$defs/License",
-                    "description": "The CLI license"
+                    "description": "The application license"
                 },
                 "version": {
                     "type": "string",
-                    "description": "The CLI version"
+                    "description": "The application version"
                 }
             },
             "required": [
@@ -143,16 +143,16 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the individual or organization"
+                    "description": "The identifying name of the contact person/organization"
                 },
                 "url": {
                     "type": "string",
                     "format": "uri",
-                    "description": "A URL to the homepage of the individual or organization"
+                    "description": "The URI for the contact information. This MUST be in the form of a URI."
                 },
                 "email": {
                     "$ref": "#/$defs/email",
-                    "description": "A contact email to the individual or organization"
+                    "description": "The email address of the contact person/organization. This MUST be in the form of an email address."
                 }
             },
             "description": "Contact information"
@@ -166,7 +166,7 @@
                 },
                 "identifier": {
                     "type": "string",
-                    "description": "The license SPDX identifier"
+                    "description": "The SPDX license identifier"
                 }
             },
             "required": [
@@ -195,11 +195,19 @@
                     "type": "string",
                     "description": "The argument description"
                 },
+                "hidden": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether or not the argument is hidden"
+                },
                 "metadata": {
                     "$ref": "#/$defs/RecordUnknown",
                     "description": "Custom metadata"
                 }
-            }
+            },
+            "required": [
+                "hidden"
+            ]
         },
         "Option": {
             "type": "object",
@@ -214,15 +222,15 @@
                         "type": "string"
                     },
                     "uniqueItems": true,
-                    "description": "The option aliases"
+                    "description": "The option's aliases"
                 },
                 "arity": {
                     "$ref": "#/$defs/Arity",
-                    "description": "The option argument arity"
+                    "description": "The option argument arity. Arity defines the minimum and maximum number of argument values"
                 },
                 "arguments": {
                     "$ref": "#/$defs/RecordArgument",
-                    "description": "The option arguments"
+                    "description": "The option's arguments"
                 },
                 "group": {
                     "type": "string",
@@ -232,11 +240,19 @@
                     "type": "string",
                     "description": "The option description"
                 },
+                "hidden": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether or not the option is hidden"
+                },
                 "metadata": {
                     "$ref": "#/$defs/RecordUnknown",
                     "description": "Custom metadata"
                 }
-            }
+            },
+            "required": [
+                "hidden"
+            ]
         },
         "Command": {
             "type": "object",
@@ -272,6 +288,11 @@
                     "type": "string",
                     "description": "The command description"
                 },
+                "hidden": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether or not the command is hidden"
+                },
                 "examples": {
                     "type": "array",
                     "items": {
@@ -283,7 +304,10 @@
                     "$ref": "#/$defs/RecordUnknown",
                     "description": "Custom metadata"
                 }
-            }
+            },
+            "required": [
+                "hidden"
+            ]
         },
         "email": {
             "type": "string",
@@ -295,14 +319,15 @@
                 "minimum": {
                     "type": "integer",
                     "minimum": 0,
-                    "description": "The minimum arity value"
+                    "description": "The minimum number of values allowed"
                 },
                 "maximum": {
                     "type": "integer",
                     "minimum": 0,
-                    "description": "The maximum arity value"
+                    "description": "The maximum number of values allowed"
                 }
-            }
+            },
+            "description": "Arity defines the minimum and maximum number of argument values"
         }
     }
 }
