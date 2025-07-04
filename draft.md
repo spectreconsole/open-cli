@@ -80,7 +80,7 @@ This is the root object of the OpenCLI Description.
 | options | Map<`string`, [Option Object](#option-object)> | Root command options |
 | commands | Map<`string`, [Command Object](#command-object)> | Root command sub commands |
 | exitCodes | [[ExitCode Object](#exitcode-object)] | Root command exit codes |
-| examples | [string] | Examples of how to use the CLI |
+| examples | [`string`] | Examples of how to use the CLI |
 | metadata | Map<`string`, `object`> | Custom metadata |
 
 #### CliInfo Object
