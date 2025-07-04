@@ -19,6 +19,13 @@ An OpenCLI Description can be used by documentation software to display
 usage of a tool, or code generation tools to create clients for
 interoping with a CLI tool.
 
+In short, an OpenCLI description can be used for the following:
+
+* Create documentation for CLI tools
+* Generate clients for interacting with CLI tools
+* Automate external tools such as MCP servers
+* Detect changes in CLI APIs
+
 This specification is heavily influenced by the [OpenAPI specification][openapi].
 
 ## Definitions
