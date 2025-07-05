@@ -100,7 +100,7 @@ model Command {
   description?: string;
 
   @doc("Whether or not the command is hidden")
-  hidden: boolean = false;
+  hidden?: boolean = false;
 
   @doc("Examples of how to use the command")
   examples?: string[];
@@ -116,6 +116,9 @@ model Argument {
   @doc("The relative position to other arguments")
   ordinal?: integer;
 
+  @doc("The argument arity. Arity defines the minimum and maximum number of argument values")
+  arity?: Arity;
+
   @doc("A list of accepted values")
   acceptedValues?: string[];
 
@@ -126,7 +129,7 @@ model Argument {
   description?: string;
 
   @doc("Whether or not the argument is hidden")
-  hidden: boolean = false;
+  hidden?: boolean = false;
 
   @doc("Custom metadata")
   metadata?: Record<unknown>;
@@ -140,9 +143,6 @@ model Option {
   @uniqueItems
   aliases?: string[];
 
-  @doc("The option argument arity. Arity defines the minimum and maximum number of argument values")
-  arity?: Arity;
-
   @doc("The option's arguments")
   arguments?: Record<Argument>;
 
@@ -153,7 +153,7 @@ model Option {
   description?: string;
 
   @doc("Whether or not the option is hidden")
-  hidden: boolean = false;
+  hidden?: boolean = false;
 
   @doc("Custom metadata")
   metadata?: Record<unknown>;

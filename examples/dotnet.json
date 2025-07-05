@@ -36,18 +36,16 @@
             },
             "options": {
                 "--configuration": {
-                    "aliases": [
-                        "-c"
-                    ],
+                    "aliases": [ "-c" ],
                     "description": "The configuration to use for building the project. The default for most projects is 'Debug'.",
                     "arguments": {
                         "CONFIGURATION": {
-                            "required": true
+                            "required": true,
+                            "arity": {
+                                "minimum": 1,
+                                "maximum": 1
+                            }
                         }
-                    },
-                    "arity": {
-                        "minimum": 1,
-                        "maximum": 1
                     }
                 }
             }

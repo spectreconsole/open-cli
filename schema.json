@@ -184,6 +184,10 @@
                     "type": "integer",
                     "description": "The relative position to other arguments"
                 },
+                "arity": {
+                    "$ref": "#/$defs/Arity",
+                    "description": "The argument arity. Arity defines the minimum and maximum number of argument values"
+                },
                 "acceptedValues": {
                     "type": "array",
                     "items": {
@@ -208,10 +212,7 @@
                     "$ref": "#/$defs/RecordUnknown",
                     "description": "Custom metadata"
                 }
-            },
-            "required": [
-                "hidden"
-            ]
+            }
         },
         "Option": {
             "type": "object",
@@ -227,10 +228,6 @@
                     },
                     "uniqueItems": true,
                     "description": "The option's aliases"
-                },
-                "arity": {
-                    "$ref": "#/$defs/Arity",
-                    "description": "The option argument arity. Arity defines the minimum and maximum number of argument values"
                 },
                 "arguments": {
                     "$ref": "#/$defs/RecordArgument",
@@ -253,10 +250,7 @@
                     "$ref": "#/$defs/RecordUnknown",
                     "description": "Custom metadata"
                 }
-            },
-            "required": [
-                "hidden"
-            ]
+            }
         },
         "Command": {
             "type": "object",
@@ -308,10 +302,7 @@
                     "$ref": "#/$defs/RecordUnknown",
                     "description": "Custom metadata"
                 }
-            },
-            "required": [
-                "hidden"
-            ]
+            }
         },
         "email": {
             "type": "string",
