@@ -6,8 +6,8 @@ import { themes as prismThemes} from 'prism-react-renderer'
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'OpenCLI',
-  url: 'https://spectreconsole.github.io',
-  baseUrl: '/open-cli',
+  url: 'https://opencli.org',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
