@@ -25,6 +25,7 @@ In short, an OpenCLI description can be used for the following:
 * Generate clients for interacting with CLI tools
 * Automate external tools such as MCP servers
 * Detect changes in CLI APIs
+* Generate auto-completion scripts
 
 This specification is heavily influenced by the [OpenAPI specification][openapi].
 
