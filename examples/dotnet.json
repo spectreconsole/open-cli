@@ -1,5 +1,5 @@
 {
-    "$schema": "../schema.json",
+    "$schema": "https://raw.githubusercontent.com/spectreconsole/open-cli/refs/heads/main/schema.json",
     "opencli": "0.1",
     "info": {
         "title": "dotnet",
