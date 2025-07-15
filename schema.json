@@ -41,6 +41,10 @@
             },
             "description": "Examples of how to use the CLI"
         },
+        "interactive": {
+            "type": "boolean",
+            "description": "Indicates whether or not the command requires interactive input"
+        },
         "metadata": {
             "$ref": "#/$defs/RecordUnknown",
             "description": "Custom metadata"
@@ -297,6 +301,10 @@
                         "type": "string"
                     },
                     "description": "Examples of how to use the command"
+                },
+                "interactive": {
+                    "type": "boolean",
+                    "description": "Indicate whether or not the command requires interactive input"
                 },
                 "metadata": {
                     "$ref": "#/$defs/RecordUnknown",

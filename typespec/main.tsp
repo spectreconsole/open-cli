@@ -30,6 +30,9 @@ model OpenCLI {
   @doc("Examples of how to use the CLI")
   examples?: string[];
 
+  @doc("Indicates whether or not the command requires interactive input")
+  interactive?: boolean;
+
   @doc("Custom metadata")
   metadata?: Record<unknown>;
 }
@@ -104,6 +107,9 @@ model Command {
 
   @doc("Examples of how to use the command")
   examples?: string[];
+
+  @doc("Indicate whether or not the command requires interactive input")
+  interactive?: boolean;
 
   @doc("Custom metadata")
   metadata?: Record<unknown>;
