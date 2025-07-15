@@ -29,6 +29,12 @@ In short, an OpenCLI description can be used for the following:
 
 This specification is heavily influenced by the [OpenAPI specification][openapi].
 
+## Change log
+
+| Date | Author | Description |
+|------|--------|-------------|
+| 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
+
 ## Definitions
 
 ### OpenCLI Description
@@ -89,6 +95,7 @@ This is the root object of the OpenCLI Description.
 | commands | Map<`string`, [Command Object](#command-object)> | Root command sub commands |
 | exitCodes | [[ExitCode Object](#exitcode-object)] | Root command exit codes |
 | examples | [`string`] | Examples of how to use the CLI |
+| interactive | `bool` | Indicates whether or not the command requires interactive input |
 | metadata | Map<`string`, `object`> | Custom metadata |
 
 #### CliInfo Object
@@ -135,6 +142,7 @@ This is the root object of the OpenCLI Description.
 | description | `string` | The command description |
 | hidden | `bool` | Whether or not the command is hidden |
 | examples | [`string`] | Examples of how to use the command |
+| interactive | `bool` | Indicates whether or not the command requires interactive input |
 | metadata | Map<`string`, `object`> | Custom metadata |
 
 #### Argument Object
