@@ -21,48 +21,52 @@ title: Examples
             "identifier": "MIT"
         }
     },
-    "options": {
-        "--help": {
-            "aliases": [
-                "-h"
-            ],
+    "options": [
+        {
+            "name": "--help",
+            "aliases": [ "-h" ],
             "description": "Display help."
         },
-        "--info": {
+        {
+            "name": "--info",
             "description": "Display .NET information."
         },
-        "--list-sdks": {
+        {
+            "name": "--list-sdks",
             "description": "Display the installed SDKs."
         },
-        "--list-runtimes": {
+        {
+            "name": "--list-runtimes",
             "description": "Display the installed runtimes."
         }
-    },
-    "commands": {
-        "build": {
-            "arguments": {
-                "PROJECT | SOLUTION": {
-                    "description": "The project or solution file to operate on. If a file is not specified, the command will search the current directory for one."
+    ],
+    "commands": [
+        {
+            "name": "build",
+            "arguments": [
+                {
+                    "name": "PROJECT | SOLUTION",
+                    "description": "The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.",
                 }
-            },
-            "options": {
-                "--configuration": {
-                    "aliases": [
-                        "-c"
-                    ],
+            ],
+            "options": [
+                {
+                    "name": "--configuration",
+                    "aliases": [ "-c" ],
                     "description": "The configuration to use for building the project. The default for most projects is 'Debug'.",
-                    "arguments": {
-                        "CONFIGURATION": {
-                            "required": true
+                    "arguments": [
+                        {
+                            "name": "CONFIGURATION",
+                            "required": true,
+                            "arity": {
+                                "minimum": 1,
+                                "maximum": 1
+                            }
                         }
-                    },
-                    "arity": {
-                        "minimum": 1,
-                        "maximum": 1
-                    }
+                    ]
                 }
-            }
+            ]
         }
-    }
+    ]
 }
 ```

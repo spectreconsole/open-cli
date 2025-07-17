@@ -38,8 +38,17 @@ In short, an OpenCLI description can be used for the following:
 * Generate clients for interacting with CLI tools
 * Automate external tools such as MCP servers
 * Detect changes in CLI APIs
+* Generate auto-completion scripts
 
 This specification is heavily influenced by the [OpenAPI specification][openapi].
+
+## Change log
+
+| Date | Author | Description |
+|------|--------|-------------|
+| 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
+| 2025-07-16 | Patrik Svensson | Added [Metadata Object](#metadata-object) |
+| 2025-07-16 | Patrik Svensson | Changed maps to arrays |
 
 ## Definitions
 
@@ -82,6 +91,10 @@ feature set. Tooling which supports OCS `1.1` SHOULD be compatible with
 all OCS `1.1.*` versions. The patch version SHOULD NOT be considered by
 tooling, making no distinction between `1.1.0` and `1.1.1` for example.
 
+### Ordering
+
+The ordering of items within arrays MUST be considered normative.
+
 ### Schema
 
 This section describes the structure of the OpenCLI Description format.
@@ -93,25 +106,26 @@ This is the root object of the OpenCLI Description.
 
 | Field Name | Type | Description |
 |------------|:----:|-------------|
-| opencli | `string` | **Required** The OpenCLI version number |
-| info | [CliInfo Object](#cliinfo-object) | **Required** Information about the CLI |
+| opencli | `string` | **REQUIRED** The OpenCLI version number |
+| info | [CliInfo Object](#cliinfo-object) | **REQUIRED** Information about the CLI |
 | conventions | [Conventions Object](#conventions-object) | The conventions used by the CLI |
-| arguments | Map\<`string`, [Argument Object](#argument-object)\> | Root command arguments |
-| options | Map\<`string`, [Option Object](#option-object)\> | Root command options |
-| commands | Map\<`string`, [Command Object](#command-object)\> | Root command sub commands |
+| arguments | [[Argument Object](#argument-object)] | Root command arguments |
+| options | [[Option Object](#option-object)] | Root command options |
+| commands | [[Command Object](#command-object)] | Root command sub commands |
 | exitCodes | [[ExitCode Object](#exitcode-object)] | Root command exit codes |
 | examples | [`string`] | Examples of how to use the CLI |
-| metadata | Map\<`string`, `object`\> | Custom metadata |
+| interactive | `bool` | Indicates whether or not the command requires interactive input |
+| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
 
 #### CliInfo Object
 
 | Field Name | Type | Description |
 |------------|:----:|-------------|
-| title | `string` | **Required** The application title |
+| title | `string` | **REQUIRED** The application title |
 | description | `string` | A description of the application |
 | contact | [Contact Object](#contact-object) | The contact information |
 | license | [License Object](#license-object) | The application license |
-| version | `string` | **Required** The application version |
+| version | `string` | **REQUIRED** The application version |
 
 #### Conventions Object
 
@@ -132,7 +146,7 @@ This is the root object of the OpenCLI Description.
 
 | Field Name | Type | Description |
 |------------|:----:|-------------|
-| name | `string` | **Required** The license name |
+| name | `string` | **REQUIRED** The license name |
 | identifier | `string` | The [SPDX](https://spdx.org/licenses/) license identifier |
 
 #### Command Object
@@ -140,14 +154,15 @@ This is the root object of the OpenCLI Description.
 | Field Name | Type | Description |
 |------------|:----:|-------------|
 | aliases | `string` | The command aliases |
-| options | Map\<`string`, [Option Object](#option-object)\> | The command's options |
-| arguments | Map\<`string`, [Argument Object](#argument-object)\> | The command's arguments |
-| commands | Map\<`string`, [Command Object](#command-object)\> | The command's sub commands |
+| options | [[Option Object](#option-object)] | The command's options |
+| arguments | [[Argument Object](#argument-object)] | The command's arguments |
+| commands | [[Command Object](#command-object)] | The command's sub commands |
 | exitCodes | [[ExitCode Object](#exitcode-object)] | The command's exit codes |
 | description | `string` | The command description |
 | hidden | `bool` | Whether or not the command is hidden |
 | examples | [`string`] | Examples of how to use the command |
-| metadata | Map\<`string`, `object`\> | Custom metadata |
+| interactive | `bool` | Indicates whether or not the command requires interactive input |
+| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
 
 #### Argument Object
 
@@ -155,11 +170,12 @@ This is the root object of the OpenCLI Description.
 |------------|:----:|-------------|
 | required | `bool` | Whether or not the argument is required |
 | ordinal | `int` | The relative position to other arguments |
+| arity | [Arity Object](#arity-object) | The argument arity. Arity defines the minimum and maximum number of argument values |
 | acceptedValues | [`string`] | A list of accepted values |
 | group | `string` | The argument group |
 | decription | `string` | The argument description |
 | hidden | `bool` | Whether or not the argument is hidden |
-| metadata | Map\<`string`, `object`\> | Custom metadata |
+| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
 
 #### Option Object
 
@@ -167,12 +183,11 @@ This is the root object of the OpenCLI Description.
 |------------|:----:|-------------|
 | required | `bool` | Whether or not the option is required |
 | aliases | [`string`] | The option's aliases |
-| arity | [Arity Object](#arity-object) | The option argument arity. Arity defines the minimum and maximum number of argument values |
-| arguments | Map\<`string`, [Argument](#argument-object)\> | The option's arguments |
+| arguments | [[Argument](#argument-object)] | The option's arguments |
 | group | `string` | The option group |
 | description | `string` | The option description |
 | hidden | `bool` | Whether or not the option is hidden |
-| metadata | Map\<`string`, `object`\> | Custom metadata |
+| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
 
 #### Arity Object
 
@@ -185,8 +200,15 @@ This is the root object of the OpenCLI Description.
 
 | Field Name | Type | Description |
 |------------|:----:|-------------|
-| code | `int` | **Required** The exit code |
+| code | `int` | **REQUIRED** The exit code |
 | description | `string` | The exit code description |
+
+#### Metadata Object
+
+| Field Name | Type | Description |
+|------------|:----:|-------------|
+| name | `string` | **REQUIRED** The metadata name |
+| value | `object` | The metadata value |
 
 [bcp14]: https://tools.ietf.org/html/bcp14
 [rfc2119]: https://tools.ietf.org/html/rfc2119
