@@ -16,13 +16,13 @@ model OpenCLI {
   conventions?: Conventions;
 
   @doc("Root command arguments")
-  arguments?: Record<Argument>;
+  arguments?: Argument[];
 
   @doc("Root command options")
-  options?: Record<Option>;
+  options?: Option[];
 
   @doc("Root command sub commands")
-  commands?: Record<Command>;
+  commands?: Command[];
 
   @doc("Root command exit codes")
   exitCodes?: ExitCode[];
@@ -34,7 +34,7 @@ model OpenCLI {
   interactive?: boolean;
 
   @doc("Custom metadata")
-  metadata?: Record<unknown>;
+  metadata?: Metadata[];
 }
 
 model CliInfo {
@@ -83,18 +83,21 @@ model License {
 }
 
 model Command {
+  @doc("The command name")
+  name: string;
+
   @doc("The command aliases")
   @uniqueItems
   aliases?: string[];
 
   @doc("The command options")
-  options?: Record<Option>;
+  options?: Option[];
 
   @doc("The command arguments")
-  arguments?: Record<Argument>;
+  arguments?: Argument[];
 
   @doc("The command's sub commands")
-  commands?: Record<Command>;
+  commands?: Command[];
 
   @doc("The command's exit codes")
   exitCodes?: ExitCode[];
@@ -112,10 +115,13 @@ model Command {
   interactive?: boolean;
 
   @doc("Custom metadata")
-  metadata?: Record<unknown>;
+  metadata?: Metadata[];
 }
 
 model Argument {
+  @doc("The argument name")
+  name: string;
+
   @doc("Whether or not the argument is required")
   required?: boolean;
 
@@ -138,10 +144,13 @@ model Argument {
   hidden?: boolean = false;
 
   @doc("Custom metadata")
-  metadata?: Record<unknown>;
+  metadata?: Metadata[];
 }
 
 model Option {
+  @doc("The option name")
+  name: string;
+
   @doc("Whether or not the option is required")
   required?: boolean;
 
@@ -150,7 +159,7 @@ model Option {
   aliases?: string[];
 
   @doc("The option's arguments")
-  arguments?: Record<Argument>;
+  arguments?: Argument[];
 
   @doc("The option group")
   group?: string;
@@ -162,7 +171,7 @@ model Option {
   hidden?: boolean = false;
 
   @doc("Custom metadata")
-  metadata?: Record<unknown>;
+  metadata?: Metadata[];
 }
 
 model ExitCode {
@@ -182,4 +191,9 @@ model Arity {
   @doc("The maximum number of values allowed")
   @minValue(0)
   maximum?: integer;
+}
+
+model Metadata {
+  name: string;
+  value?: unknown;
 }

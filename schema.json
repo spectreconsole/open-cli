@@ -16,15 +16,24 @@
             "description": "The conventions used by the CLI"
         },
         "arguments": {
-            "$ref": "#/$defs/RecordArgument",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Argument"
+            },
             "description": "Root command arguments"
         },
         "options": {
-            "$ref": "#/$defs/RecordOption",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Option"
+            },
             "description": "Root command options"
         },
         "commands": {
-            "$ref": "#/$defs/RecordCommand",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Command"
+            },
             "description": "Root command sub commands"
         },
         "exitCodes": {
@@ -46,7 +55,10 @@
             "description": "Indicates whether or not the command requires interactive input"
         },
         "metadata": {
-            "$ref": "#/$defs/RecordUnknown",
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Metadata"
+            },
             "description": "Custom metadata"
         }
     },
@@ -100,26 +112,182 @@
                 }
             }
         },
-        "RecordArgument": {
+        "Argument": {
             "type": "object",
-            "properties": {},
-            "unevaluatedProperties": {
-                "$ref": "#/$defs/Argument"
-            }
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The argument name"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether or not the argument is required"
+                },
+                "ordinal": {
+                    "type": "integer",
+                    "description": "The relative position to other arguments"
+                },
+                "arity": {
+                    "$ref": "#/$defs/Arity",
+                    "description": "The argument arity. Arity defines the minimum and maximum number of argument values"
+                },
+                "acceptedValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of accepted values"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The argument group"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The argument description"
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether or not the argument is hidden"
+                },
+                "metadata": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Metadata"
+                    },
+                    "description": "Custom metadata"
+                }
+            },
+            "required": [
+                "name"
+            ]
         },
-        "RecordOption": {
+        "Option": {
             "type": "object",
-            "properties": {},
-            "unevaluatedProperties": {
-                "$ref": "#/$defs/Option"
-            }
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The option name"
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether or not the option is required"
+                },
+                "aliases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "description": "The option's aliases"
+                },
+                "arguments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Argument"
+                    },
+                    "description": "The option's arguments"
+                },
+                "group": {
+                    "type": "string",
+                    "description": "The option group"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The option description"
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether or not the option is hidden"
+                },
+                "metadata": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Metadata"
+                    },
+                    "description": "Custom metadata"
+                }
+            },
+            "required": [
+                "name"
+            ]
         },
-        "RecordCommand": {
+        "Command": {
             "type": "object",
-            "properties": {},
-            "unevaluatedProperties": {
-                "$ref": "#/$defs/Command"
-            }
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The command name"
+                },
+                "aliases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "description": "The command aliases"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Option"
+                    },
+                    "description": "The command options"
+                },
+                "arguments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Argument"
+                    },
+                    "description": "The command arguments"
+                },
+                "commands": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Command"
+                    },
+                    "description": "The command's sub commands"
+                },
+                "exitCodes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/ExitCode"
+                    },
+                    "description": "The command's exit codes"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The command description"
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether or not the command is hidden"
+                },
+                "examples": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Examples of how to use the command"
+                },
+                "interactive": {
+                    "type": "boolean",
+                    "description": "Indicate whether or not the command requires interactive input"
+                },
+                "metadata": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Metadata"
+                    },
+                    "description": "Custom metadata"
+                }
+            },
+            "required": [
+                "name"
+            ]
         },
         "ExitCode": {
             "type": "object",
@@ -137,10 +305,17 @@
                 "code"
             ]
         },
-        "RecordUnknown": {
+        "Metadata": {
             "type": "object",
-            "properties": {},
-            "unevaluatedProperties": {}
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {}
+            },
+            "required": [
+                "name"
+            ]
         },
         "Contact": {
             "type": "object",
@@ -177,145 +352,6 @@
                 "name"
             ]
         },
-        "Argument": {
-            "type": "object",
-            "properties": {
-                "required": {
-                    "type": "boolean",
-                    "description": "Whether or not the argument is required"
-                },
-                "ordinal": {
-                    "type": "integer",
-                    "description": "The relative position to other arguments"
-                },
-                "arity": {
-                    "$ref": "#/$defs/Arity",
-                    "description": "The argument arity. Arity defines the minimum and maximum number of argument values"
-                },
-                "acceptedValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "A list of accepted values"
-                },
-                "group": {
-                    "type": "string",
-                    "description": "The argument group"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The argument description"
-                },
-                "hidden": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Whether or not the argument is hidden"
-                },
-                "metadata": {
-                    "$ref": "#/$defs/RecordUnknown",
-                    "description": "Custom metadata"
-                }
-            }
-        },
-        "Option": {
-            "type": "object",
-            "properties": {
-                "required": {
-                    "type": "boolean",
-                    "description": "Whether or not the option is required"
-                },
-                "aliases": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "uniqueItems": true,
-                    "description": "The option's aliases"
-                },
-                "arguments": {
-                    "$ref": "#/$defs/RecordArgument",
-                    "description": "The option's arguments"
-                },
-                "group": {
-                    "type": "string",
-                    "description": "The option group"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The option description"
-                },
-                "hidden": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Whether or not the option is hidden"
-                },
-                "metadata": {
-                    "$ref": "#/$defs/RecordUnknown",
-                    "description": "Custom metadata"
-                }
-            }
-        },
-        "Command": {
-            "type": "object",
-            "properties": {
-                "aliases": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "uniqueItems": true,
-                    "description": "The command aliases"
-                },
-                "options": {
-                    "$ref": "#/$defs/RecordOption",
-                    "description": "The command options"
-                },
-                "arguments": {
-                    "$ref": "#/$defs/RecordArgument",
-                    "description": "The command arguments"
-                },
-                "commands": {
-                    "description": "The command's sub commands",
-                    "$ref": "#/$defs/RecordCommand"
-                },
-                "exitCodes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/ExitCode"
-                    },
-                    "description": "The command's exit codes"
-                },
-                "description": {
-                    "type": "string",
-                    "description": "The command description"
-                },
-                "hidden": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Whether or not the command is hidden"
-                },
-                "examples": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Examples of how to use the command"
-                },
-                "interactive": {
-                    "type": "boolean",
-                    "description": "Indicate whether or not the command requires interactive input"
-                },
-                "metadata": {
-                    "$ref": "#/$defs/RecordUnknown",
-                    "description": "Custom metadata"
-                }
-            }
-        },
-        "email": {
-            "type": "string",
-            "pattern": ".+\\@.+\\..+"
-        },
         "Arity": {
             "type": "object",
             "properties": {
@@ -331,6 +367,10 @@
                 }
             },
             "description": "Arity defines the minimum and maximum number of argument values"
+        },
+        "email": {
+            "type": "string",
+            "pattern": ".+\\@.+\\..+"
         }
     }
 }
