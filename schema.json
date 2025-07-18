@@ -347,10 +347,7 @@
                     "type": "string",
                     "description": "The SPDX license identifier"
                 }
-            },
-            "required": [
-                "name"
-            ]
+            }
         },
         "Arity": {
             "type": "object",
