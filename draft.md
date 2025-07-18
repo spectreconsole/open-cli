@@ -36,6 +36,7 @@ This specification is heavily influenced by the [OpenAPI specification][openapi]
 | 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
 | 2025-07-16 | Patrik Svensson | Added [Metadata Object](#metadata-object) |
 | 2025-07-16 | Patrik Svensson | Changed maps to arrays |
+| 2025-07-18 | Patrik Svensson | `name` property in [License Object](#license-object) is no longer required |
 
 ## Definitions
 
@@ -133,7 +134,7 @@ This is the root object of the OpenCLI Description.
 
 | Field Name | Type | Description |
 |------------|:----:|-------------|
-| name | `string` | **REQUIRED** The license name |
+| name | `string` | The license name |
 | identifier | `string` | The [SPDX](https://spdx.org/licenses/) license identifier |
 
 #### Command Object

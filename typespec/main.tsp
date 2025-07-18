@@ -76,7 +76,7 @@ model Contact {
 
 model License {
   @doc("The license name")
-  name: string;
+  name?: string;
 
   @doc("The SPDX license identifier")
   identifier?: string;
