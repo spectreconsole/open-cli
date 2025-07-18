@@ -140,6 +140,7 @@ This is the root object of the OpenCLI Description.
 
 | Field Name | Type | Description |
 |------------|:----:|-------------|
+| name | `string` | **REQUIRED** The command name |
 | aliases | `string` | The command aliases |
 | options | [[Option Object](#option-object)] | The command's options |
 | arguments | [[Argument Object](#argument-object)] | The command's arguments |
@@ -155,6 +156,7 @@ This is the root object of the OpenCLI Description.
 
 | Field Name | Type | Description |
 |------------|:----:|-------------|
+| name | `string` | **REQUIRED** The argument name |
 | required | `bool` | Whether or not the argument is required |
 | ordinal | `int` | The relative position to other arguments |
 | arity | [Arity Object](#arity-object) | The argument arity. Arity defines the minimum and maximum number of argument values |
@@ -168,6 +170,7 @@ This is the root object of the OpenCLI Description.
 
 | Field Name | Type | Description |
 |------------|:----:|-------------|
+| name | `string` | **REQUIRED** The option name |
 | required | `bool` | Whether or not the option is required |
 | aliases | [`string`] | The option's aliases |
 | arguments | [[Argument](#argument-object)] | The option's arguments |
