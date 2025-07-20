@@ -142,7 +142,7 @@ This is the root object of the OpenCLI Description.
 | Field Name | Type | Description |
 |------------|:----:|-------------|
 | name | `string` | **REQUIRED** The command name |
-| aliases | `string` | The command aliases |
+| aliases | [`string`] | The command aliases |
 | options | [[Option Object](#option-object)] | The command's options |
 | arguments | [[Argument Object](#argument-object)] | The command's arguments |
 | commands | [[Command Object](#command-object)] | The command's sub commands |
