@@ -33,6 +33,9 @@ model OpenCLI {
   @doc("Indicates whether or not the command requires interactive input")
   interactive?: boolean;
 
+  @doc("Environment variables used by this command")
+  environmentVariables?: EnvironmentVariable[];
+
   @doc("Custom metadata")
   metadata?: Metadata[];
 }
@@ -170,6 +173,9 @@ model Option {
   @doc("Whether or not the option is hidden")
   hidden?: boolean = false;
 
+  @doc("A related environment variable that is used as the default value for the option")
+  environmentVariable?: EnvironmentVariable;
+
   @doc("Custom metadata")
   metadata?: Metadata[];
 }
@@ -196,4 +202,12 @@ model Arity {
 model Metadata {
   name: string;
   value?: unknown;
+}
+
+model EnvironmentVariable {
+  @doc("The name of the environment variable")
+  name: string;
+
+  @doc("Custom metadata")
+  metadata?: Metadata[];
 }

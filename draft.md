@@ -37,6 +37,7 @@ This specification is heavily influenced by the [OpenAPI specification][openapi]
 | 2025-07-16 | Patrik Svensson | Added [Metadata Object](#metadata-object) |
 | 2025-07-16 | Patrik Svensson | Changed maps to arrays |
 | 2025-07-18 | Patrik Svensson | `name` property in [License Object](#license-object) is no longer required |
+| 2025-07-28 | Chris McGee | Added environment variables |
 
 ## Definitions
 
@@ -103,6 +104,7 @@ This is the root object of the OpenCLI Description.
 | exitCodes | [[ExitCode Object](#exitcode-object)] | Root command exit codes |
 | examples | [`string`] | Examples of how to use the CLI |
 | interactive | `bool` | Indicates whether or not the command requires interactive input |
+| environmentVariables | [[EnvironmentVariable Object](#environmentvariable-object)] | Environment variables used by this command |
 | metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
 
 #### CliInfo Object
@@ -178,6 +180,7 @@ This is the root object of the OpenCLI Description.
 | group | `string` | The option group |
 | description | `string` | The option description |
 | hidden | `bool` | Whether or not the option is hidden |
+| environmentVariable | [[EnvironmentVariable Object](#environmentvariable-object)] | A related environment variable that is used as the default value for the option |
 | metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
 
 #### Arity Object
@@ -193,6 +196,13 @@ This is the root object of the OpenCLI Description.
 |------------|:----:|-------------|
 | code | `int` | **REQUIRED** The exit code |
 | description | `string` | The exit code description |
+
+#### EnvironmentVariable Object
+
+| Field Name | Type | Description |
+|------------|:----:|-------------|
+| name | `string` | **REQUIRED** The name of the environment variable |
+| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
 
 #### Metadata Object
 

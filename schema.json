@@ -36,6 +36,13 @@
             },
             "description": "Root command sub commands"
         },
+        "environmentVariables": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/EnvironmentVariable"
+            },
+            "description": "Environment variables used by this command"
+        },
         "exitCodes": {
             "type": "array",
             "items": {
@@ -201,6 +208,10 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Whether or not the option is hidden"
+                },
+                "environmentVariable": {
+                    "$ref": "#/$defs/EnvironmentVariable",
+                    "description": "A related environment variable that is used as the default value for the option"
                 },
                 "metadata": {
                     "type": "array",
@@ -368,6 +379,23 @@
         "email": {
             "type": "string",
             "pattern": ".+\\@.+\\..+"
+        },
+        "EnvironmentVariable": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the environment variable"
+                },
+                "metadata": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Metadata"
+                    },
+                    "description": "Custom metadata"
+                }
+            },
+            "required": ["name"]
         }
     }
 }
