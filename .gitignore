@@ -1,5 +1,9 @@
 # Artifacts
 .artifacts
 
+# Build
+build/obj
+build/bin
+
 # Other
 .vscode

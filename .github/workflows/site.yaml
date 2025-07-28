@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Deploy Site
 
 on:
@@ -11,17 +12,26 @@ jobs:
     name: Build Docusaurus
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
           cache: npm
           cache-dependency-path: ./site/package-lock.json
 
-      - name: Build website
-        run: make ci
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+
+      - name: Build
+        shell: bash
+        run: |
+          dotnet tool restore
+          dotnet make ci --trace
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
