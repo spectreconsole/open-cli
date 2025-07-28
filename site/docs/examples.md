@@ -10,7 +10,7 @@ title: Examples
 
 ```json
 {
-    "$schema": "https://raw.githubusercontent.com/spectreconsole/open-cli/refs/heads/main/schema.json",
+    "$schema": "https://opencli.org/draft.json",
     "opencli": "0.1",
     "info": {
         "title": "dotnet",
