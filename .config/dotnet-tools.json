@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "make": {
+      "version": "0.7.0",
+      "commands": [
+        "dotnet-make"
+      ],
+      "rollForward": false
+    }
+  }
+}
