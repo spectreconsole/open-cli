@@ -159,7 +159,6 @@ This is the root object of the OpenCLI Description.
 |------------|:----:|-------------|
 | name | `string` | **REQUIRED** The argument name |
 | required | `bool` | Whether or not the argument is required |
-| ordinal | `int` | The relative position to other arguments |
 | arity | [Arity Object](#arity-object) | The argument arity. Arity defines the minimum and maximum number of argument values |
 | acceptedValues | [`string`] | A list of accepted values |
 | group | `string` | The argument group |
