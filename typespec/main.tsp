@@ -125,9 +125,6 @@ model Argument {
   @doc("Whether or not the argument is required")
   required?: boolean;
 
-  @doc("The relative position to other arguments")
-  ordinal?: integer;
-
   @doc("The argument arity. Arity defines the minimum and maximum number of argument values")
   arity?: Arity;
 

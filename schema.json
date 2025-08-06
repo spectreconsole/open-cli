@@ -123,10 +123,6 @@
                     "type": "boolean",
                     "description": "Whether or not the argument is required"
                 },
-                "ordinal": {
-                    "type": "integer",
-                    "description": "The relative position to other arguments"
-                },
                 "arity": {
                     "$ref": "#/$defs/Arity",
                     "description": "The argument arity. Arity defines the minimum and maximum number of argument values"
