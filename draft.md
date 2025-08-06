@@ -176,6 +176,7 @@ This is the root object of the OpenCLI Description.
 | arguments | [[Argument](#argument-object)] | The option's arguments |
 | group | `string` | The option group |
 | description | `string` | The option description |
+| recursive | `bool` | Specifies whether the option is accessible from the immediate parent command and, recursively, from its subcommands |
 | hidden | `bool` | Whether or not the option is hidden |
 | metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
 
