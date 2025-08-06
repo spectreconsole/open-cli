@@ -8,6 +8,19 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 
 This document is licensed under the MIT license
 
+<details>
+<summary>Change log</summary>
+| Date | Author | Description |
+|------|--------|-------------|
+| 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
+| 2025-07-16 | Patrik Svensson | Added [Metadata Object](#metadata-object) |
+| 2025-07-16 | Patrik Svensson | Changed maps to arrays |
+| 2025-07-18 | Patrik Svensson | `name` property in [License Object](#license-object) is no longer required |
+| 2025-08-06 | Patrik Svensson | Remove `ordinal` property from [Argument Object](#argument-object) |
+| 2025-08-06 | Patrik Svensson | Add `recursive` property to [Option Object](#option-object) |
+| 2025-08-06 | Patrik Svensson | Add `summary` property to [CliInfo Object](#cliinfo-object) |
+</details>
+
 ## Introduction
 
 The OpenCLI specification (OCS) defines a standard, platform and
@@ -28,15 +41,6 @@ In short, an OpenCLI description can be used for the following:
 * Generate auto-completion scripts
 
 This specification is heavily influenced by the [OpenAPI specification][openapi].
-
-## Change log
-
-| Date | Author | Description |
-|------|--------|-------------|
-| 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
-| 2025-07-16 | Patrik Svensson | Added [Metadata Object](#metadata-object) |
-| 2025-07-16 | Patrik Svensson | Changed maps to arrays |
-| 2025-07-18 | Patrik Svensson | `name` property in [License Object](#license-object) is no longer required |
 
 ## Definitions
 
