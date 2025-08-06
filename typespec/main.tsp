@@ -167,6 +167,9 @@ model Option {
   @doc("The option description")
   description?: string;
 
+  @doc("Specifies whether the option is accessible from the immediate parent command and, recursively, from its subcommands")
+  recursive?: boolean = false;
+
   @doc("Whether or not the option is hidden")
   hidden?: boolean = false;
 

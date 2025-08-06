@@ -197,6 +197,11 @@
                     "type": "string",
                     "description": "The option description"
                 },
+                "recursive": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Specifies whether the option is accessible from the immediate parent command and, recursively, from its subcommands"
+                },
                 "hidden": {
                     "type": "boolean",
                     "default": false,
