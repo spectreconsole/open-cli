@@ -41,6 +41,9 @@ model CliInfo {
   @doc("The application title")
   title: string;
 
+  @doc("A short summary of the application")
+  summary?: string;
+
   @doc("A description of the application")
   description?: string;
 

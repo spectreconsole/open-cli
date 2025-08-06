@@ -110,6 +110,7 @@ This is the root object of the OpenCLI Description.
 | Field Name | Type | Description |
 |------------|:----:|-------------|
 | title | `string` | **REQUIRED** The application title |
+| summary | `string` | A short summary of the application |
 | description | `string` | A description of the application |
 | contact | [Contact Object](#contact-object) | The contact information |
 | license | [License Object](#license-object) | The application license |
