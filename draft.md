@@ -10,6 +10,7 @@ This document is licensed under the MIT license
 
 <details>
 <summary>Change log</summary>
+
 | Date | Author | Description |
 |------|--------|-------------|
 | 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
