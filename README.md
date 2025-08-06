@@ -13,6 +13,7 @@ access to source code or documentation.
 * Generate clients for interacting with CLI tools
 * Automate external tools such as MCP servers
 * Detect changes in CLI APIs
+* Generate auto-completion scripts
 
 ## Contribute
 
