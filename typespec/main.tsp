@@ -31,7 +31,7 @@ model OpenCLI {
   examples?: string[];
 
   @doc("Indicates whether or not the command requires interactive input")
-  interactive?: boolean;
+  interactive?: boolean = false;
 
   @doc("Custom metadata")
   metadata?: Metadata[];
@@ -115,7 +115,7 @@ model Command {
   examples?: string[];
 
   @doc("Indicate whether or not the command requires interactive input")
-  interactive?: boolean;
+  interactive?: boolean = false;
 
   @doc("Custom metadata")
   metadata?: Metadata[];
@@ -126,7 +126,7 @@ model Argument {
   name: string;
 
   @doc("Whether or not the argument is required")
-  required?: boolean;
+  required?: boolean = false;
 
   @doc("The argument arity. Arity defines the minimum and maximum number of argument values")
   arity?: Arity;
@@ -152,7 +152,7 @@ model Option {
   name: string;
 
   @doc("Whether or not the option is required")
-  required?: boolean;
+  required?: boolean = false;
 
   @doc("The option's aliases")
   @uniqueItems
@@ -189,11 +189,11 @@ model ExitCode {
 model Arity {
   @doc("The minimum number of values allowed")
   @minValue(0)
-  minimum?: integer;
+  minimum?: integer = 1;
 
   @doc("The maximum number of values allowed")
   @minValue(0)
-  maximum?: integer;
+  maximum?: integer = 1;
 }
 
 model Metadata {
