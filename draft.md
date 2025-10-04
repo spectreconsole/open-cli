@@ -20,6 +20,7 @@ This document is licensed under the MIT license
 | 2025-08-06 | Patrik Svensson | Remove `ordinal` property from [Argument Object](#argument-object) |
 | 2025-08-06 | Patrik Svensson | Add `recursive` property to [Option Object](#option-object) |
 | 2025-08-06 | Patrik Svensson | Add `summary` property to [CliInfo Object](#cliinfo-object) |
+| 2025-10-04 | Patrik Svensson | Add default values to schema |
 </details>
 
 ## Introduction
@@ -97,115 +98,115 @@ This text is the only normative description of the format.
 
 This is the root object of the OpenCLI Description.
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| opencli | `string` | **REQUIRED** The OpenCLI version number |
-| info | [CliInfo Object](#cliinfo-object) | **REQUIRED** Information about the CLI |
-| conventions | [Conventions Object](#conventions-object) | The conventions used by the CLI |
-| arguments | [[Argument Object](#argument-object)] | Root command arguments |
-| options | [[Option Object](#option-object)] | Root command options |
-| commands | [[Command Object](#command-object)] | Root command sub commands |
-| exitCodes | [[ExitCode Object](#exitcode-object)] | Root command exit codes |
-| examples | [`string`] | Examples of how to use the CLI |
-| interactive | `bool` | Indicates whether or not the command requires interactive input |
-| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| opencli | `string` | - | **REQUIRED** The OpenCLI version number |
+| info | [CliInfo Object](#cliinfo-object) | - | **REQUIRED** Information about the CLI |
+| conventions | [Conventions Object](#conventions-object) | - | The conventions used by the CLI |
+| arguments | [[Argument Object](#argument-object)] | - | Root command arguments |
+| options | [[Option Object](#option-object)] | - | Root command options |
+| commands | [[Command Object](#command-object)] | - | Root command sub commands |
+| exitCodes | [[ExitCode Object](#exitcode-object)] | - | Root command exit codes |
+| examples | [`string`] | - | Examples of how to use the CLI |
+| interactive | `bool` | `false` | Indicates whether or not the command requires interactive input |
+| metadata | [[Metadata Object](#metadata-object)] | - | Custom metadata |
 
 #### CliInfo Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| title | `string` | **REQUIRED** The application title |
-| summary | `string` | A short summary of the application |
-| description | `string` | A description of the application |
-| contact | [Contact Object](#contact-object) | The contact information |
-| license | [License Object](#license-object) | The application license |
-| version | `string` | **REQUIRED** The application version |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| title | `string` | - | **REQUIRED** The application title |
+| summary | `string` | - | A short summary of the application |
+| description | `string` | - | A description of the application |
+| contact | [Contact Object](#contact-object) | - | The contact information |
+| license | [License Object](#license-object) | - | The application license |
+| version | `string` | - | **REQUIRED** The application version |
 
 #### Conventions Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| groupOptions | `bool` | Whether or not grouping of short options are allowed |
-| optionArgumentSeparator | `string` | The option argument separator |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| groupOptions | `bool` | `true` | Whether or not grouping of short options are allowed |
+| optionArgumentSeparator | `string` | U+0020 (space) | The option argument separator |
 
 #### Contact Object
 
-| Field Name | Format | Description |
-|------------|:------:|-------------|
-| name | `string` | The identifying name of the contact person/organization |
-| url | `string` | The URI for the contact information. This MUST be in the form of a URI |
-| email | `string` | The email address of the contact person/organization. This MUST be in the form of an email address |
+| Field Name | Format | Default Value | Description |
+|------------|:------:|---------------|-------------|
+| name | `string` | - | The identifying name of the contact person/organization |
+| url | `string` | - | The URI for the contact information. This MUST be in the form of a URI |
+| email | `string` | - | The email address of the contact person/organization. This MUST be in the form of an email address |
 
 #### License Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| name | `string` | The license name |
-| identifier | `string` | The [SPDX](https://spdx.org/licenses/) license identifier |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| name | `string` | - | The license name |
+| identifier | `string` | - | The [SPDX](https://spdx.org/licenses/) license identifier |
 
 #### Command Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| name | `string` | **REQUIRED** The command name |
-| aliases | [`string`] | The command aliases |
-| options | [[Option Object](#option-object)] | The command's options |
-| arguments | [[Argument Object](#argument-object)] | The command's arguments |
-| commands | [[Command Object](#command-object)] | The command's sub commands |
-| exitCodes | [[ExitCode Object](#exitcode-object)] | The command's exit codes |
-| description | `string` | The command description |
-| hidden | `bool` | Whether or not the command is hidden |
-| examples | [`string`] | Examples of how to use the command |
-| interactive | `bool` | Indicates whether or not the command requires interactive input |
-| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| name | `string` | - | **REQUIRED** The command name |
+| aliases | [`string`] | - | The command aliases |
+| options | [[Option Object](#option-object)] | - | The command's options |
+| arguments | [[Argument Object](#argument-object)] | - | The command's arguments |
+| commands | [[Command Object](#command-object)] | - | The command's sub commands |
+| exitCodes | [[ExitCode Object](#exitcode-object)] | - | The command's exit codes |
+| description | `string` | - | The command description |
+| hidden | `bool` | `false` | Whether or not the command is hidden |
+| examples | [`string`] | - | Examples of how to use the command |
+| interactive | `bool` | `false` | Indicates whether or not the command requires interactive input |
+| metadata | [[Metadata Object](#metadata-object)] | - | Custom metadata |
 
 #### Argument Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| name | `string` | **REQUIRED** The argument name |
-| required | `bool` | Whether or not the argument is required |
-| arity | [Arity Object](#arity-object) | The argument arity. Arity defines the minimum and maximum number of argument values |
-| acceptedValues | [`string`] | A list of accepted values |
-| group | `string` | The argument group |
-| decription | `string` | The argument description |
-| hidden | `bool` | Whether or not the argument is hidden |
-| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| name | `string` | - | **REQUIRED** The argument name |
+| required | `bool` | `false` | Whether or not the argument is required |
+| arity | [Arity Object](#arity-object) | - | The argument arity. Arity defines the minimum and maximum number of argument values |
+| acceptedValues | [`string`] | - | A list of accepted values |
+| group | `string` | - | The argument group |
+| decription | `string` | - | The argument description |
+| hidden | `bool` | `false` | Whether or not the argument is hidden |
+| metadata | [[Metadata Object](#metadata-object)] | - | Custom metadata |
 
 #### Option Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| name | `string` | **REQUIRED** The option name |
-| required | `bool` | Whether or not the option is required |
-| aliases | [`string`] | The option's aliases |
-| arguments | [[Argument](#argument-object)] | The option's arguments |
-| group | `string` | The option group |
-| description | `string` | The option description |
-| recursive | `bool` | Specifies whether the option is accessible from the immediate parent command and, recursively, from its subcommands |
-| hidden | `bool` | Whether or not the option is hidden |
-| metadata | [[Metadata Object](#metadata-object)] | Custom metadata |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| name | `string` | - | **REQUIRED** The option name |
+| required | `bool` | `false` | Whether or not the option is required |
+| aliases | [`string`] | - | The option's aliases |
+| arguments | [[Argument](#argument-object)] | - | The option's arguments |
+| group | `string` | - | The option group |
+| description | `string` | - | The option description |
+| recursive | `bool` | `false` | Specifies whether the option is accessible from the immediate parent command and, recursively, from its subcommands |
+| hidden | `bool` | `false` | Whether or not the option is hidden |
+| metadata | [[Metadata Object](#metadata-object)] | - | Custom metadata |
 
 #### Arity Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| minimum | `int` | The minimum number of values allowed |
-| maximum | `int` | The maximum number of values allowed |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| minimum | `int` | `1` | The minimum number of values allowed |
+| maximum | `int` | `1` | The maximum number of values allowed. If not specified (`nil`), unlimited number of items are allowed |
 
 #### ExitCode Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| code | `int` | **REQUIRED** The exit code |
-| description | `string` | The exit code description |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| code | `int` | - | **REQUIRED** The exit code |
+| description | `string` | - | The exit code description |
 
 #### Metadata Object
 
-| Field Name | Type | Description |
-|------------|:----:|-------------|
-| name | `string` | **REQUIRED** The metadata name |
-| value | `object` | The metadata value |
+| Field Name | Type | Default Value | Description |
+|------------|:----:|---------------|-------------|
+| name | `string` | - | **REQUIRED** The metadata name |
+| value | `object` | - | The metadata value |
 
 [bcp14]: https://tools.ietf.org/html/bcp14
 [rfc2119]: https://tools.ietf.org/html/rfc2119
