@@ -53,7 +53,7 @@ conforms to the OpenCLI Specification.
 
 ### CLI
 
-Command Line Application. A text based interface to an appliction.
+Command Line Application. A text based interface to an application.
 
 ### Schema
 
@@ -66,7 +66,7 @@ are named by section headings in this document.
 
 ### Case sensitivity
 
-All field names in the OpenCLI specification is case sensitive unless
+All field names in the OpenCLI specification are case sensitive unless
 otherwise stated.
 
 ### Arity
