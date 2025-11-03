@@ -169,7 +169,7 @@ This is the root object of the OpenCLI Description.
 | arity | [Arity Object](#arity-object) | - | The argument arity. Arity defines the minimum and maximum number of argument values |
 | acceptedValues | [`string`] | - | A list of accepted values |
 | group | `string` | - | The argument group |
-| decription | `string` | - | The argument description |
+| description | `string` | - | The argument description |
 | hidden | `bool` | `false` | Whether or not the argument is hidden |
 | metadata | [[Metadata Object](#metadata-object)] | - | Custom metadata |
 
