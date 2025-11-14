@@ -83,6 +83,9 @@ model License {
 
   @doc("The SPDX license identifier")
   identifier?: string;
+
+  @doc("The URI for the license. This MUST be in the form of a URI")
+  url?: string;
 }
 
 model Command {

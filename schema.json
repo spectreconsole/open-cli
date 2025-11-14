@@ -351,6 +351,10 @@
                 "identifier": {
                     "type": "string",
                     "description": "The SPDX license identifier"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URI for the license. This MUST be in the form of a URI"
                 }
             }
         },

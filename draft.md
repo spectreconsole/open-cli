@@ -143,6 +143,7 @@ This is the root object of the OpenCLI Description.
 |------------|:----:|---------------|-------------|
 | name | `string` | - | The license name |
 | identifier | `string` | - | The [SPDX](https://spdx.org/licenses/) license identifier |
+| uri | `string` | - | The URI for the license. This MUST be in the form of a URI |
 
 #### Command Object
 
