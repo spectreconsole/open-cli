@@ -18,7 +18,8 @@ title: Examples
         "description": "The .NET CLI",
         "license": {
             "name": "MIT License",
-            "identifier": "MIT"
+            "identifier": "MIT",
+            "url": "https://opensource.org/license/mit"
         }
     },
     "options": [
