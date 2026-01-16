@@ -13,6 +13,7 @@ This document is licensed under the MIT license
 
 | Date | Author | Description |
 |------|--------|-------------|
+| 2026-01-16 | Bob Lail | Add Integration section with `--help-opencli` flag specification |
 | 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
 | 2025-07-16 | Patrik Svensson | Added [Metadata Object](#metadata-object) |
 | 2025-07-16 | Patrik Svensson | Changed maps to arrays |
@@ -72,6 +73,35 @@ otherwise stated.
 ### Arity
 
 The number of argument values an option expect.
+
+## Integration
+
+### Discovery via `--help-opencli`
+
+CLI tools implementing this specification SHOULD support a `--help-opencli` flag that outputs their OpenCLI Description to standard output.
+
+When invoked with the `--help-opencli` flag, a CLI tool:
+
+* MUST output a valid OpenCLI Description as defined by this specification
+* MUST output to standard output
+* MUST exit with a zero (0) exit code after successful output
+* SHOULD NOT execute any other command logic or side effects
+
+The `--help-opencli` flag enables automated discovery and integration of CLI tools with documentation generators, code generation tools, automation platforms, and other systems that consume OpenCLI Descriptions.
+
+#### Example
+
+```bash
+$ mytool --help-opencli
+{
+  "opencli": "0.1",
+  "info": {
+    "title": "mytool",
+    "version": "1.0.0",
+    "description": "A sample CLI tool"
+  }
+}
+```
 
 ## Specification
 
