@@ -5,7 +5,7 @@ using TypeSpec.JsonSchema;
 
 @jsonSchema
 @doc("The OpenCLI description")
-model OpenCLI {
+model OpenCLI extends Command {
   @doc("The OpenCLI version number")
   opencli: string;
 
@@ -14,39 +14,9 @@ model OpenCLI {
 
   @doc("The conventions used by the CLI")
   conventions?: Conventions;
-
-  @doc("Root command arguments")
-  arguments?: Argument[];
-
-  @doc("Root command options")
-  options?: Option[];
-
-  @doc("Root command sub commands")
-  commands?: Command[];
-
-  @doc("Root command exit codes")
-  exitCodes?: ExitCode[];
-
-  @doc("Examples of how to use the CLI")
-  examples?: string[];
-
-  @doc("Indicates whether or not the command requires interactive input")
-  interactive?: boolean = false;
-
-  @doc("Custom metadata")
-  metadata?: Metadata[];
 }
 
 model CliInfo {
-  @doc("The application title")
-  title: string;
-
-  @doc("A short summary of the application")
-  summary?: string;
-
-  @doc("A description of the application")
-  description?: string;
-
   @doc("The contact information")
   contact?: Contact;
 
@@ -91,6 +61,9 @@ model License {
 model Command {
   @doc("The command name")
   name: string;
+
+  @doc("A short summary of the command")
+  summary?: string;
 
   @doc("The command aliases")
   @uniqueItems

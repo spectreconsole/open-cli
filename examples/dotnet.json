@@ -1,10 +1,10 @@
 {
     "$schema": "../schema.json",
-    "opencli": "0.1",
+    "opencli": "0.2",
+    "name": "dotnet",
+    "description": "The .NET CLI",
     "info": {
-        "title": "dotnet",
         "version": "9.0.1",
-        "description": "The .NET CLI",
         "license": {
             "name": "MIT License",
             "identifier": "MIT",
@@ -36,7 +36,7 @@
             "arguments": [
                 {
                     "name": "PROJECT | SOLUTION",
-                    "description": "The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.",
+                    "description": "The project or solution file to operate on. If a file is not specified, the command will search the current directory for one."
                 }
             ],
             "options": [

@@ -1,6 +1,6 @@
 # OpenCLI Specification
 
-Version 0.1
+Version 0.2
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -13,6 +13,7 @@ This document is licensed under the MIT license
 
 | Date | Author | Description |
 |------|--------|-------------|
+| 2026-01-16 | Bob Lail | **BREAKING**: [Document Object](#document-object) now extends [Command Object](#command-object); add `summary` to [Command Object](#command-object); remove `title` and `description` from [CliInfo Object](#cliinfo-object) |
 | 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
 | 2025-07-16 | Patrik Svensson | Added [Metadata Object](#metadata-object) |
 | 2025-07-16 | Patrik Svensson | Changed maps to arrays |
@@ -96,13 +97,18 @@ This text is the only normative description of the format.
 
 #### Document Object
 
-This is the root object of the OpenCLI Description.
+This is the root object of the OpenCLI Description. It extends the [Command Object](#command-object) and inherits all of its fields.
 
 | Field Name | Type | Default Value | Description |
 |------------|:----:|---------------|-------------|
 | opencli | `string` | - | **REQUIRED** The OpenCLI version number |
 | info | [CliInfo Object](#cliinfo-object) | - | **REQUIRED** Information about the CLI |
 | conventions | [Conventions Object](#conventions-object) | - | The conventions used by the CLI |
+| name | `string` | - | **REQUIRED** The CLI name |
+| summary | `string` | - | A short summary of the CLI |
+| description | `string` | - | A description of the CLI |
+| aliases | [`string`] | - | The CLI aliases |
+| hidden | `bool` | `false` | Whether or not the CLI is hidden |
 | arguments | [[Argument Object](#argument-object)] | - | Root command arguments |
 | options | [[Option Object](#option-object)] | - | Root command options |
 | commands | [[Command Object](#command-object)] | - | Root command sub commands |
@@ -115,9 +121,6 @@ This is the root object of the OpenCLI Description.
 
 | Field Name | Type | Default Value | Description |
 |------------|:----:|---------------|-------------|
-| title | `string` | - | **REQUIRED** The application title |
-| summary | `string` | - | A short summary of the application |
-| description | `string` | - | A description of the application |
 | contact | [Contact Object](#contact-object) | - | The contact information |
 | license | [License Object](#license-object) | - | The application license |
 | version | `string` | - | **REQUIRED** The application version |
@@ -150,6 +153,7 @@ This is the root object of the OpenCLI Description.
 | Field Name | Type | Default Value | Description |
 |------------|:----:|---------------|-------------|
 | name | `string` | - | **REQUIRED** The command name |
+| summary | `string` | - | A short summary of the command |
 | aliases | [`string`] | - | The command aliases |
 | options | [[Option Object](#option-object)] | - | The command's options |
 | arguments | [[Argument Object](#argument-object)] | - | The command's arguments |
