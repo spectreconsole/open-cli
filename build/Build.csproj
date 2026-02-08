@@ -1,10 +1,10 @@
-<Project Sdk="Cake.Sdk/5.0.25198.49-beta">
+<Project Sdk="Cake.Sdk/6.0.0">
   <PropertyGroup>
     <TargetFramework Condition="$(TargetFrameworks) == ''">net9.0</TargetFramework>
     <RunWorkingDirectory>$(MSBuildProjectDirectory)/..</RunWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Spectre.Console" Version="0.50.0" />
+    <PackageReference Include="Spectre.Console" Version="0.53.0" />
     <Using Include="Spectre.Console"/>
   </ItemGroup>
 </Project>
