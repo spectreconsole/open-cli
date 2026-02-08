@@ -4,7 +4,7 @@
     <RunWorkingDirectory>$(MSBuildProjectDirectory)/..</RunWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Spectre.Console" Version="0.50.0" />
+    <PackageReference Include="Spectre.Console" Version="0.53.0" />
     <Using Include="Spectre.Console"/>
   </ItemGroup>
 </Project>
