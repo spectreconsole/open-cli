@@ -1,4 +1,4 @@
-<Project Sdk="Cake.Sdk/5.0.25198.49-beta">
+<Project Sdk="Cake.Sdk/6.0.0">
   <PropertyGroup>
     <TargetFramework Condition="$(TargetFrameworks) == ''">net9.0</TargetFramework>
     <RunWorkingDirectory>$(MSBuildProjectDirectory)/..</RunWorkingDirectory>
