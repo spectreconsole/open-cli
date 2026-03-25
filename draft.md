@@ -13,6 +13,7 @@ This document is licensed under the MIT license
 
 | Date | Author | Description |
 |------|--------|-------------|
+| 2026-03-24 | Bob Lail | Add default value for `arity` to [Argument Object](#argument-object) |
 | 2025-07-15 | Patrik Svensson | Added `interactive` to root command and commands |
 | 2025-07-16 | Patrik Svensson | Added [Metadata Object](#metadata-object) |
 | 2025-07-16 | Patrik Svensson | Changed maps to arrays |
@@ -167,7 +168,7 @@ This is the root object of the OpenCLI Description.
 |------------|:----:|---------------|-------------|
 | name | `string` | - | **REQUIRED** The argument name |
 | required | `bool` | `false` | Whether or not the argument is required |
-| arity | [Arity Object](#arity-object) | - | The argument arity. Arity defines the minimum and maximum number of argument values |
+| arity | [Arity Object](#arity-object) | `{"minimum": 1, "maximum": 1}` | The argument arity. Arity defines the minimum and maximum number of argument values |
 | acceptedValues | [`string`] | - | A list of accepted values |
 | group | `string` | - | The argument group |
 | description | `string` | - | The argument description |

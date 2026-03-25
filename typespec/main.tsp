@@ -132,7 +132,7 @@ model Argument {
   required?: boolean = false;
 
   @doc("The argument arity. Arity defines the minimum and maximum number of argument values")
-  arity?: Arity;
+  arity?: Arity = #{ minimum: 1, maximum: 1 };
 
   @doc("A list of accepted values")
   acceptedValues?: string[];
