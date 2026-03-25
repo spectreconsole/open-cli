@@ -129,6 +129,10 @@
                 },
                 "arity": {
                     "$ref": "#/$defs/Arity",
+                    "default": {
+                        "minimum": 1,
+                        "maximum": 1
+                    },
                     "description": "The argument arity. Arity defines the minimum and maximum number of argument values"
                 },
                 "acceptedValues": {
