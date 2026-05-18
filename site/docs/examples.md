@@ -10,8 +10,58 @@ title: Examples
 
 ```json
 {
-    "$schema": "https://opencli.org/draft.json",
+    "$schema": "../schema.json",
     "opencli": "0.1",
+    "command": {
+        "name": "dotnet",
+        "options": [
+            {
+                "name": "--help",
+                "aliases": [ "-h" ],
+                "description": "Display help."
+            },
+            {
+                "name": "--info",
+                "description": "Display .NET information."
+            },
+            {
+                "name": "--list-sdks",
+                "description": "Display the installed SDKs."
+            },
+            {
+                "name": "--list-runtimes",
+                "description": "Display the installed runtimes."
+            }
+        ],
+        "commands": [
+            {
+                "name": "build",
+                "arguments": [
+                    {
+                        "name": "PROJECT | SOLUTION",
+                        "description": "The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.",
+                    }
+                ],
+                "options": [
+                    {
+                        "name": "--configuration",
+                        "aliases": [ "-c" ],
+                        "description": "The configuration to use for building the project. The default for most projects is 'Debug'.",
+                        "arguments": [
+                            {
+                                "name": "CONFIGURATION",
+                                "required": true,
+                                "arity": {
+                                    "minimum": 1,
+                                    "maximum": 1
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
     "info": {
         "title": "dotnet",
         "version": "9.0.1",
@@ -21,53 +71,6 @@ title: Examples
             "identifier": "MIT",
             "url": "https://opensource.org/license/mit"
         }
-    },
-    "options": [
-        {
-            "name": "--help",
-            "aliases": [ "-h" ],
-            "description": "Display help."
-        },
-        {
-            "name": "--info",
-            "description": "Display .NET information."
-        },
-        {
-            "name": "--list-sdks",
-            "description": "Display the installed SDKs."
-        },
-        {
-            "name": "--list-runtimes",
-            "description": "Display the installed runtimes."
-        }
-    ],
-    "commands": [
-        {
-            "name": "build",
-            "arguments": [
-                {
-                    "name": "PROJECT | SOLUTION",
-                    "description": "The project or solution file to operate on. If a file is not specified, the command will search the current directory for one.",
-                }
-            ],
-            "options": [
-                {
-                    "name": "--configuration",
-                    "aliases": [ "-c" ],
-                    "description": "The configuration to use for building the project. The default for most projects is 'Debug'.",
-                    "arguments": [
-                        {
-                            "name": "CONFIGURATION",
-                            "required": true,
-                            "arity": {
-                                "minimum": 1,
-                                "maximum": 1
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+    }
 }
 ```
