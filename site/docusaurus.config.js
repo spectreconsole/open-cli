@@ -68,6 +68,11 @@ const config = {
             position: 'left',
             label: 'Specification',
           },
+          {
+            to: '/explorer',
+            position: 'left',
+            label: 'Explorer',
+          },
           /* {
              to: '/blog', label: 'Blog', position: 'left'
           }, */

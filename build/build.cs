@@ -7,6 +7,7 @@ if (target == "Default")
         .AddColumns("Target", "")
         .AddRow("[yellow]clean[/]", "Cleans up artifacts")
         .AddRow("[yellow]build-schema[/]", "Builds the JSON schema")
+        .AddRow("[yellow]build-explorer[/]", "Builds the OpenCLI explorer")
         .AddRow("[yellow]build-site[/]", "Builds the site")
         .AddRow("[yellow]run-site[/]", "Runs the site locally")
         .AddRow("[yellow]ci[/]", "Runs the CI build locally")
@@ -27,28 +28,33 @@ Task("CI")
 // TASKS
 //////////////////////////////////////////////////////////////////////
 
-// Clears all artifacts
 Task("Clean")
     .Does(ctx =>
 {
     ctx.CleanDirectory("./.artifacts");
 });
 
-// Updates the site contents
 Task("Update-Site-Contents")
     .Does(ctx =>
 {
-    // Copy the draft.md content into the site
     ctx
         .TransformTextFile("./site/docs/spec.template", "<%", "%>")
         .WithToken("SPEC", System.IO.File.ReadAllText("./draft.md"))
         .Save("./site/docs/spec.md");
 
-    // Copy the schema
+    ctx.EnsureDirectoryExists("./site/static/descriptions");
+    foreach (var file in ctx.GetFiles("./examples/*.json"))
+    {
+        var json = System.IO.File.ReadAllText(file.FullPath)
+            .Replace("\"../schema.json\"", "\"https://opencli.org/draft.json\"");
+
+        System.IO.File.WriteAllText(
+            $"./site/static/descriptions/{file.GetFilename()}", json);
+    }
+
     ctx.CopyFile("./schema.json", "./site/static/draft.json");
 });
 
-// Builds the JSON schema
 Task("Build-Schema")
     .IsDependentOn("Clean")
     .Does(ctx =>
@@ -66,10 +72,21 @@ Task("Build-Schema")
     ctx.CopyFile("./.artifacts/@typespec/json-schema/OpenCLI.json", "./schema.json");
 });
 
-// Builds the site
+Task("Build-Explorer")
+    .Does(ctx =>
+{
+    ctx.Npm(arguments: ["ci"], workingDirectory: "./explorer");
+    ctx.Npm(arguments: ["run build"], workingDirectory: "./explorer");
+
+    ctx.CopyFile(
+        "./explorer/dist/opencli-explorer.js",
+        "./site/static/opencli-explorer.js");
+});
+
 Task("Build-Site")
     .IsDependentOn("Clean")
     .IsDependentOn("Update-Site-Contents")
+    .IsDependentOn("Build-Explorer")
     .Does(ctx =>
 {
     ctx.Npm(
@@ -81,9 +98,9 @@ Task("Build-Site")
         workingDirectory: "./site");
 });
 
-// Runs the site locally
 Task("Run-Site")
     .IsDependentOn("Update-Site-Contents")
+    .IsDependentOn("Build-Explorer")
     .Does(ctx =>
 {
     ctx.Npm(

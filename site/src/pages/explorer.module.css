@@ -1,0 +1,51 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.grow {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+
+.input {
+  height: 2.25rem;
+  padding: 0 0.625rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-button-border-radius);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  font-weight: normal;
+}
+
+.file {
+  position: relative;
+  overflow: hidden;
+  max-width: 16rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
